@@ -8,7 +8,7 @@ import java.awt.Color;
 import java.awt.event.*;
 
 /**
- * This class is responsible for the canvas and drawing the circles. Its implementing a mouse listener as well
+ * This class is responsible for the canvas and drawing the rectangles. Its implementing a mouse listener as well
  */
 
 public class MainCanvas extends Canvas implements MouseListener {
@@ -17,8 +17,8 @@ public class MainCanvas extends Canvas implements MouseListener {
 	public int x;
 	// The y coordinates for the mouse
 	public int y;
-	// The number of circles drawn
-	private int numCircles = 0;
+	// The number of rectangles drawn
+	private int numRec = 0;
 	
 	public MainCanvas() {
 		setSize(500, 500);
@@ -27,20 +27,15 @@ public class MainCanvas extends Canvas implements MouseListener {
 	}
 	
 	/**
-	 * This method is responsible for drawing the circles
+	 * This method is responsible for drawing the rectangles
 	 */
 	private void paintCircle() {
-		Ellipse2D e;
-		e = new Ellipse2D.Float(
-				this.x, this.y,
-				20.0F, 20.0F);
-		
-		Graphics2D gd2 = (Graphics2D)this.getGraphics();
-		gd2.draw(e);
+		Graphics g = (Graphics)this.getGraphics();
+		g.drawRect(this.x, this.y, 20, 20);
 	}
 
 	/**
-	 * By double-clicking on the canvas with the mouse, the circles appear on the canvas
+	 * By double-clicking on the canvas with the mouse, the rectangles appear on the canvas
 	 * @param event for the mouse click
 	 */
 	
@@ -51,10 +46,10 @@ public class MainCanvas extends Canvas implements MouseListener {
 			x = event.getX();
 			y = event.getY();
 			
-			// After 2 circles has been drawn the canvas gets repainted 
-			numCircles++;
-			if (numCircles == 3) {
-				numCircles = 0;
+			// After 2 rectangles has been drawn the canvas gets repainted 
+			numRec++;
+			if (numRec == 3) {
+				numRec = 0;
 				repaint();
 			}
 			else {
@@ -69,14 +64,10 @@ public class MainCanvas extends Canvas implements MouseListener {
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override

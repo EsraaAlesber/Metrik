@@ -9,7 +9,7 @@ import java.awt.*;
 public class MainFrame extends Frame {
 	
 	public MainFrame(MainFrameController mfc) {
-		setTitle("Metrik Version 1.0");
+		setTitle("Metrik Variante 1.0.1");
 		setSize(500, 500);
 		
 		addWindowListener(mfc);
