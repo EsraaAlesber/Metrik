@@ -16,6 +16,10 @@ public class MainCanvas extends Canvas implements MouseListener {
 	public int y;
 	// The number of circles drawn
 	private int numCircles = 0;
+	// Array for the points, for calculating the distance
+	private int[] points = new int[4];
+	
+	Graphics2D gd2 = (Graphics2D)this.getGraphics();
 
 	public MainCanvas() {
 		setSize(500, 500);
@@ -31,11 +35,14 @@ public class MainCanvas extends Canvas implements MouseListener {
 		e = new Ellipse2D.Float(
 				this.x, this.y,
 				20.0F, 20.0F);
-
-		Graphics2D gd2 = (Graphics2D)this.getGraphics();
 		gd2.draw(e);
 		// Show coordinates
 		gd2.drawString("(" + this.x + ", " + this.y + ")", this.x + 20, this.y -20);
+	}
+	
+	private void showDistance(int[] points) {
+		// Show Distance
+		gd2.drawString("Distance:  " + "(" + cacDistance(points) + ")", 20, 20);
 	}
 
 	/**
@@ -44,7 +51,7 @@ public class MainCanvas extends Canvas implements MouseListener {
 	 */
 	@Override
 	public void mouseClicked(MouseEvent event) {
-		if (event.getClickCount() == 2 && event.getButton() == MouseEvent.BUTTON1) {
+		if (event.getClickCount() == 2 && event.getButton() == MouseEvent.BUTTON1) {	
 			// Get coordinates
 			x = event.getX();
 			y = event.getY();
@@ -58,7 +65,25 @@ public class MainCanvas extends Canvas implements MouseListener {
 			else {
 				paintCircle();
 			}
+			
+			// For calculating the distance 
+			if (numCircles == 1) {
+				points[0] = x;
+				points[1] = y;
+			} if (numCircles == 2) {
+				points[2] = x;
+				points[3] = y;
+				showDistance(points);
+			} 
 		}
+	}
+	
+	private double cacDistance(int[] points) {
+		double a = Math.pow((points[2] - points[0]), 2);
+		double b = Math.pow((points[3] - points[1]), 2);
+		double c = a + b;
+		double result = Math.sqrt(c);
+		return result;
 	}
 
 	@Override
