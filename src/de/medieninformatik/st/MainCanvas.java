@@ -18,8 +18,6 @@ public class MainCanvas extends Canvas implements MouseListener {
 	private int numCircles = 0;
 	// Array for the points, for calculating the distance
 	private int[] points = new int[4];
-	
-	Graphics2D gd2 = (Graphics2D)this.getGraphics();
 
 	public MainCanvas() {
 		setSize(500, 500);
@@ -35,12 +33,16 @@ public class MainCanvas extends Canvas implements MouseListener {
 		e = new Ellipse2D.Float(
 				this.x, this.y,
 				20.0F, 20.0F);
+
+		Graphics2D gd2 = (Graphics2D)this.getGraphics();
 		gd2.draw(e);
 		// Show coordinates
 		gd2.drawString("(" + this.x + ", " + this.y + ")", this.x + 20, this.y -20);
 	}
 	
 	private void showDistance(int[] points) {
+		Graphics2D gd2 = (Graphics2D)this.getGraphics();
+		
 		// Show Distance
 		gd2.drawString("Distance:  " + "(" + cacDistance(points) + ")", 20, 20);
 	}
