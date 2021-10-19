@@ -40,6 +40,10 @@ public class MainCanvas extends Canvas implements MouseListener {
 		gd2.drawString("(" + this.x + ", " + this.y + ")", this.x + 20, this.y -20);
 	}
 	
+	/**
+	 * This method shows the distance between the circles
+	 * @param points array that has both of the circles' coordinates
+	 */
 	private void showDistance(int[] points) {
 		Graphics2D gd2 = (Graphics2D)this.getGraphics();
 		
@@ -80,6 +84,11 @@ public class MainCanvas extends Canvas implements MouseListener {
 		}
 	}
 	
+	/**
+	 * This method calculates the distance between the circles
+	 * @param points array that has both of the circles' coordinates
+	 * @return the distance
+	 */
 	private double cacDistance(int[] points) {
 		double a = Math.pow((points[2] - points[0]), 2);
 		double b = Math.pow((points[3] - points[1]), 2);
