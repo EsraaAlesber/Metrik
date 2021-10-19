@@ -34,6 +34,8 @@ public class MainCanvas extends Canvas implements MouseListener {
 
 		Graphics2D gd2 = (Graphics2D)this.getGraphics();
 		gd2.draw(e);
+		
+		
 	}
 
 	/**
