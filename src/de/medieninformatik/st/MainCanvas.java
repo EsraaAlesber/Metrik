@@ -4,6 +4,18 @@ import java.awt.Canvas;
 import java.awt.geom.Ellipse2D;
 import java.awt.Graphics2D;
 import java.awt.event.*;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.EventQueue;
+import java.awt.Graphics;
+import java.awt.Shape;
+import java.awt.geom.Line2D;
+import java.awt.geom.Point2D;
+import java.awt.geom.Rectangle2D;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  * This class is responsible for the canvas and drawing the circles. Its implementing a mouse listener as well
@@ -37,6 +49,28 @@ public class MainCanvas extends Canvas implements MouseListener {
 		// Show coordinates
 		gd2.drawString("(" + this.x + ", " + this.y + ")", this.x + 20, this.y -20);
 	}
+
+
+
+
+	/**
+	* This method is responsible for connecting the circles with a line.
+	 */
+
+private void connectCircles(Graphics g){
+	// Get coordinates
+	x1 = event.getX1();
+	y1 = event.getY1();
+	x2 = event.getX2();
+	y2 = event.getY2();
+
+	Graphics2D g2 = (Graphics2D) g; //casting
+
+	g.drawline(x1, x2, y1, y2);
+
+}
+
+
 
 	/**
 	 * By double-clicking on the canvas with the mouse, the circles appear on the canvas
