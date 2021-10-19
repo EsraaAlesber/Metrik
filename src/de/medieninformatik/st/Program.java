@@ -14,5 +14,6 @@ public class Program {
 		MainFrame mainFrame = new MainFrame(mfc);
 
 		mainFrame.setVisible(true);
+		new connectCircles();
 	}
 }
