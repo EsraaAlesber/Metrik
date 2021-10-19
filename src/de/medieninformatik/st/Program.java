@@ -12,10 +12,7 @@ public class Program {
 	public static void main(String[] args) {
 		MainFrameController mfc = new MainFrameController();
 		MainFrame mainFrame = new MainFrame(mfc);
-		
-		MainCanvas mcs = new MainCanvas();
-		
-		mainFrame.add(mcs);
+
 		mainFrame.setVisible(true);
 	}
 }
